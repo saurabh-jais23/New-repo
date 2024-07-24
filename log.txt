@@ -1,0 +1,59 @@
+OpenTAP Command Line Interface 9.21.1+2a94acc7
+
+O-RAN Studio API opened
+Signal Studio API opened
+Updates available for:
+ - KS8000: 9.20.0+0a89bbcb -> 9.21.0+185bec68
+ - Visual Studio SDK: 1.7.0+0c597c21 -> 1.8.0+d5099542
+ - Timing Analyzer: 9.20.0+0a89bbcb -> 9.21.0+185bec68
+ - Developer's System: 9.20.0+0a89bbcb -> 9.21.0+185bec68
+ - PathWave License Manager: 2.5.1+b6a9a8c2 -> 2.7.0+398d3a87
+ - Editor: 9.20.0+0a89bbcb -> 9.21.0+185bec68
+ - Demonstration: 9.0.5+3cab80c8 -> 9.0.6+e89e1ec1
+ - SDK: 9.21.0+795ccc10 -> 9.21.1+2a94acc7
+ - P705xA O-RAN Radio Unit Test Automation Solution: 8.0.0-alpha.1.38+5b548f49.PreRelease8 -> 8.1.1+cb345a40
+Loaded test plan from c:\Program Files\Keysight\Test Automation\MPlane-DL-5thSept.TapPlan [19.3 s]
+Test Plan: MPlane-DL-5thSept
+-----------------------------------------------------------------
+Starting TestPlan 'MPlane-DL-5thSept' on 09/05/2023 22:34:46, 5 of 31 TestSteps enabled.
+Resource "CSV" opened. [142 us]
+Resource "Open RAN Report" opened. [171 us]
+Resource "TSA S-Plane" opened. [7.71 ms]
+Configure C:\ProgramData\Keysight\MPlane\Client\duprofile\v6\swm-download-location.json
+Configure C:\ProgramData\Keysight\MPlane\Client\duprofile\v6\log-management.json
+Resource "NetConfClient" opened. [93.5 ms]
+Number of ports 2
+Configure Status: True
+Resource "TSA O-RAN Player and Capture" opened. [7.89 s]
+" 3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case)" started.
+" 3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case) \ 2) Run M-Plane Client Session" started.
+" 3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case) \ 2) Run M-Plane Client Session" completed with verdict 'Pass'. [10.0 s]
+" 3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case) \ 3) M-Plane Wait for End Query" started.
+Wait for SUCCESS Minimum capability check passed. from C:\ProgramData\Keysight\MPlane\Client\log\runlog_10.36.58.12_e_1s_2023-09-05-T-22-34-59\mPlaneClient_2023_09_06_045037\mPlaneClient_2023_09_06_045037.log
+" 3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case) \ 3) M-Plane Wait for End Query" completed with verdict 'Pass'. [17.5 ms]
+" 3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case) \ 4) M-Plane Verdict Check" started.
+Test Case Verdict: True
+" 3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case) \ 4) M-Plane Verdict Check" completed with verdict 'Pass'. [24.9 ms]
+" 3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case) \ 5) Stop M-Plane Session" started.
+M-Plane Session has been ended from task list
+" 3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case) \ 5) Stop M-Plane Session" completed with verdict 'Pass'. [2.62 ms]
+" 3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case)" completed with verdict 'Pass'. [10.0 s]
+-------- Summary of test plan started 09/05/2023 22:34:46 --------
+  3.1.1.1 Transport and Handshake in IPv4 Environment (Positive Case)        10.0 s   Pass   
+   2) Run M-Plane Client Session                    10.0 s   Pass   
+   3) M-Plane Wait for End Query                    17.5 ms  Pass   
+   4) M-Plane Verdict Check                         24.9 ms  Pass   
+   5) Stop M-Plane Session                          2.62 ms  Pass   c
+   3.1.1.2 Transport and Handshake in IPv4 Environment (Positive Case)        10.0 s   Pass
+   2) Run M-Plane Client Session                    10.0 s   Pass
+   3) M-Plane Wait for End Query                    17.5 ms  Pass
+   4) M-Plane Verdict Check                         24.9 ms  Pass
+   5) Stop M-Plane Session                          2.62 ms  Pass
+------------------------------------------------------------------
+----------- Test plan completed successfully in 19.0 s -----------
+Resource "CSV" closed. [7.50 us]
+Resource "Open RAN Report" closed. [138 us]
+Resource "TSA O-RAN Player and Capture" closed. [84.7 ms]
+M-Plane Session has been ended from task list
+Resource "TSA S-Plane" closed. [557 us]
+Resource "NetConfClient" closed. [1.62 ms]
