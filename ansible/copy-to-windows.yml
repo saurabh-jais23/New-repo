@@ -1,0 +1,6 @@
+---
+- name: Copy files
+    ansible.builtin.copy:
+                src: /home/file1.txt
+                dest: C:\Saurabh\ 
+                follow: no
