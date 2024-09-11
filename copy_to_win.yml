@@ -4,5 +4,5 @@
   tasks:
     - name: Copy the contents of Packages/ directory to the target server
       win_copy:
-            src: /home/Packages/
+            src: ./file2
             dest: C:\Saurabh\
