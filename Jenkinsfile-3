@@ -3,24 +3,34 @@ pipeline {
 
   stages {
     
-       stage('Install Python Modules') {
+stage('Install Dependencies') {
             steps {
-                // Install the required Python packages
+                // Install Python, pip, and other required dependencies
                 sh '''
-                    python3 -m venv venv  # Create a virtual environment
-                    source venv/bin/activate  # Activate the virtual environment
-                    pip install --upgrade pip  # Upgrade pip
-                    pip install pywinrm requests  # Install winrm and requests
+                    sudo apt-get update
+                    sudo apt-get install -y python3 python3-venv python3-pip
                 '''
             }
         }
 
-        stage('Run WinRM Task') {
+        stage('Install WinRM and Python Modules') {
             steps {
-                // Example of using WinRM to run a task
+                // Install WinRM and required Python packages
+                sh '''
+                    python3 -m venv venv  # Create a Python virtual environment
+                    source venv/bin/activate  # Activate the virtual environment
+                    pip install --upgrade pip  # Upgrade pip
+                    pip install pywinrm requests  # Install pywinrm and requests
+                '''
+            }
+        }
+
+        stage('Test WinRM Installation') {
+            steps {
+                // Verify WinRM module is installed and working
                 sh '''
                     source venv/bin/activate  # Activate the virtual environment
-                    python -c "import winrm; print('WinRM module is working')"
+                    python -c "import winrm; print('WinRM is successfully installed and imported')"
                 '''
             }
         }
