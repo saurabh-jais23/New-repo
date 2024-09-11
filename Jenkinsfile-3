@@ -17,8 +17,7 @@ stage('Install Dependencies') {
             steps {
                 // Install WinRM and required Python packages
                 sh '''
-                    python3 -m venv venv  # Create a Python virtual environment
-                    source venv/bin/activate  # Activate the virtual environment
+                   
                     pip install --upgrade pip  # Upgrade pip
                     pip install pywinrm requests  # Install pywinrm and requests
                 '''
