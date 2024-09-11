@@ -2,12 +2,30 @@ pipeline {
   agent { label 'ubuntu' }
 
   stages {
-    stage('Hello') {
+    
+       stage('Install Python Modules') {
+            steps {
+                // Install the required Python packages
+                sh '''
+                    python3 -m venv venv  # Create a virtual environment
+                    source venv/bin/activate  # Activate the virtual environment
+                    pip install --upgrade pip  # Upgrade pip
+                    pip install pywinrm requests  # Install winrm and requests
+                '''
+            }
+        }
+
+        stage('Run WinRM Task') {
+            steps {
+                // Example of using WinRM to run a task
+                sh '''
+                    source venv/bin/activate  # Activate the virtual environment
+                    python -c "import winrm; print('WinRM module is working')"
+                '''
+            }
+        }
+      stage('Hello') {
       steps {
-        sh ''' pip install pywinrm
-           pip install request
-        python -c "import winrm; print('WinRM module is installed')"  '''
-'
         sh 'ansible-playbook -i winhosts2.ini copy_to_win.yml'
       }
     }
