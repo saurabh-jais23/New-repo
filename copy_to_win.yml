@@ -1,0 +1,8 @@
+---
+- name: Copy files to Windows PC
+  hosts: windows_servers
+  tasks:
+    - name: Copy the contents of Packages/ directory to the target server
+      win_copy:
+            src: /home/Packages/
+            dest: C:\Saurabh\
