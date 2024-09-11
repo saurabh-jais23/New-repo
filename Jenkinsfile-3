@@ -4,7 +4,8 @@ pipeline {
   stages {
     stage('Hello') {
       steps {
-      
+        sh 'pip install pywinrm'
+        sh 'pip install request'
         sh 'ansible-playbook -i winhosts2.ini copy_to_win.yml'
       }
     }
