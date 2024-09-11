@@ -24,15 +24,7 @@ stage('Install Dependencies') {
             }
         }
 
-        stage('Test WinRM Installation') {
-            steps {
-                // Verify WinRM module is installed and working
-                sh '''
-                    source venv/bin/activate  # Activate the virtual environment
-                    python -c "import winrm; print('WinRM is successfully installed and imported')"
-                '''
-            }
-        }
+
       stage('Hello') {
       steps {
         sh 'ansible-playbook -i winhosts2.ini copy_to_win.yml'
