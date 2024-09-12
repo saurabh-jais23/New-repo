@@ -2,7 +2,11 @@ pipeline {
   agent { label 'ubuntu' }
 
   stages {
-    
+stage('Copy artifacts'){
+steps {
+copyArtifacts excludes: 'bin/Release', filter: 'bin/Release/*.TapPackage', fingerprintArtifacts: true, projectName: 'Pipeline', target: 'Package'
+}
+}    
 stage('Install Dependencies') {
             steps {
                 // Install Python, pip, and other required dependencies
