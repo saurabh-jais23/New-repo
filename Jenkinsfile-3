@@ -13,11 +13,10 @@ pipeline {
             }
         }
 
-  agent { label 'ubuntu' }
 
   
-    
 stage('Install Dependencies') {
+agent { label 'ubuntu' }
             steps {
                 // Install Python, pip, and other required dependencies
                 sh '''
@@ -28,6 +27,7 @@ stage('Install Dependencies') {
         }
 
         stage('Install WinRM and Python Modules') {
+          agent { label 'ubuntu' }
             steps {
                 // Install WinRM and required Python packages
                 sh '''
@@ -40,6 +40,7 @@ stage('Install Dependencies') {
     
 
       stage('Hello') {
+      agent { label 'ubuntu' }
       steps {
         sh 'ansible-playbook -i winhosts2.ini copy_to_win.yml'
       }
