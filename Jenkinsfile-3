@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     
-                    sh 'scp -o StrictHostKeyChecking=no C:\ProgramData\CB\workspace\Pipeline\bin\Release\*.TapPackage jenkins@c69-ubu0011-bld-p705xacbci-ssh:/home/kpclocal/jenkins/workspace/AnsibleProject/'  // Copy file to agent node
+                    sh 'scp -o StrictHostKeyChecking=no c:\\ProgramData\\CB\workspace\\Pipeline\\bin\\Release\\*.TapPackage jenkins@c69-ubu0011-bld-p705xacbci-ssh:/home/kpclocal/jenkins/workspace/AnsibleProject/'  // Copy file to agent node
                 }
             }
         }
