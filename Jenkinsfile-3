@@ -15,7 +15,7 @@ pipeline {
 
   agent { label 'ubuntu' }
 
-  stages {
+  
     
 stage('Install Dependencies') {
             steps {
