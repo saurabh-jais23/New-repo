@@ -1,0 +1,12 @@
+pipeline {
+    agent { label 'ubuntu' }
+    stages {
+        stage('Retrieve Artifacts') {
+            steps {
+                copyArtifacts projectName: 'pipeline', selector: lastSuccessful()
+                sh 'cat build_output.txt'
+            }
+        }
+
+    }
+}
