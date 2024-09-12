@@ -1,4 +1,18 @@
 pipeline {
+  agent any
+  stages {
+        stage('Generate Files on Source Node') {
+            agent {
+                label 'windows'  // Node where files will be generated
+            }
+            steps {
+                script {
+                    
+                    sh 'scp -o StrictHostKeyChecking=no C:\ProgramData\CB\workspace\Pipeline\bin\Release\*.TapPackage jenkins@c69-ubu0011-bld-p705xacbci-ssh:/home/kpclocal/jenkins/workspace/AnsibleProject/'  // Copy file to agent node
+                }
+            }
+        }
+
   agent { label 'ubuntu' }
 
   stages {
@@ -23,7 +37,7 @@ stage('Install Dependencies') {
                 '''
             }
         }
-
+    
 
       stage('Hello') {
       steps {
