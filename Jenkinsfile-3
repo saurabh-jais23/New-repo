@@ -30,7 +30,7 @@ copyRemoteArtifacts from: 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline',
 }
       stage('Ansible Playbook to copy TapPackages') {
       steps {
-        sh 'ansible-playbook -i winhosts2.ini copy_to_win.yml'
+        sh 'ansible-playbook -i winhosts2.ini copy_to_win.yml -vvv'
       }
     }
   }
