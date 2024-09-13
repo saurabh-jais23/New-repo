@@ -25,7 +25,7 @@ stage('Install Dependencies') {
         }
     stage('Copy artifacts'){
 steps {
-copyArtifacts excludes: 'bin/Release', filter: 'bin/Release/*.TapPackage', fingerprintArtifacts: true, projectName: 'Pipeline', target: 'Package'
+copyRemoteArtifacts from: 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline', includes: 'bin/Release/*.TapPackage', selector: [$class: 'LastStableRemoteBuildSelector']
 }
 }
       stage('Hello') {
