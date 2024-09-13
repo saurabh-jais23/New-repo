@@ -25,8 +25,7 @@ stage('Install Dependencies') {
         }
     stage('Copy artifacts'){
 steps {
-copyRemoteArtifacts from: 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline', includes: 'bin/Release/*.TapPackage', mapper: [$class: 'StripDirectoriesArtifactNameMapper', count: 1], selector: [$class: 'LastStableRemoteBuildSelector']
-sh 'ls -la'
+copyRemoteArtifacts 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline'
 }
 }
 
