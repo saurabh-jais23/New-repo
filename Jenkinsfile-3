@@ -31,7 +31,15 @@ stage('Install Dependencies') {
 
       stage('Ansible Playbook to copy TapPackages') {
       steps {
-        sh 'ansible-playbook -i winhosts2.ini copy_to_win.yml -vvv'
+        sh  'dos2unix /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
+        sh  'ls -l /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
+        sh  'chmod 644 /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini
+'
+'       sh 'ansible-inventory -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini --list'
+
+
+
+        sh 'ansible-playbook -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini copy_to_win.yml -vvv'
       }
     }
   }
