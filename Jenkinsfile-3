@@ -2,7 +2,11 @@ pipeline {
   agent { label 'ubuntu' }
 
   stages {
-    
+      stage('Copy artifacts'){
+steps {
+copyRemoteArtifacts 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline'
+}
+}  
 stage('Install Dependencies') {
             steps {
                 // Install Python, pip, and other required dependencies
@@ -23,11 +27,7 @@ stage('Install Dependencies') {
                 '''
             }
         }
-    stage('Copy artifacts'){
-steps {
-copyRemoteArtifacts 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline'
-}
-}
+
 
       stage('Ansible Playbook to copy TapPackages') {
       steps {
