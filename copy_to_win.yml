@@ -4,5 +4,5 @@
   tasks:
     - name: Copy the contents of Packages/ directory to the target server
       win_copy:
-            src:  *.TapPackages
+            src:  AnsibleProject/bin/Release/*.TapPackages
             dest: C:\Saurabh\
