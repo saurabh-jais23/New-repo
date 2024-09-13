@@ -4,5 +4,5 @@
   tasks:
     - name: Copy the contents of Packages/ directory to the target server
       win_copy:
-            src:  bin/Release/*.TapPackage
+            remote_src:  bin/Release/*.TapPackage
             dest: C:\Saurabh\
