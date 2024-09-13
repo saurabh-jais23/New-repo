@@ -4,7 +4,7 @@ pipeline {
   stages {
       stage('Copy artifacts'){
 steps {
-copyRemoteArtifacts 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline'
+copyRemoteArtifacts from: 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline', includes: 'bin/Release/*.TapPackage', mapper: [$class: 'StripDirectoriesArtifactNameMapper', count: 3]
 }
 }  
 stage('Install Dependencies') {
