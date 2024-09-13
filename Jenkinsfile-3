@@ -25,7 +25,7 @@ stage('Install Dependencies') {
         }
     stage('Copy artifacts'){
 steps {
-copyRemoteArtifacts from: 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline', includes: 'bin/Release/*.TapPackage', mapper: [$class: 'FlattenDirectoriesArtifactNameMapper'], selector: [$class: 'LastStableRemoteBuildSelector']
+copyRemoteArtifacts from: 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline', includes: 'bin/Release/*.TapPackage', mapper: [$class: 'StripDirectoriesArtifactNameMapper', count: 2], selector: [$class: 'LastStableRemoteBuildSelector']
 }
 }
       stage('Ansible Playbook to copy TapPackages') {
