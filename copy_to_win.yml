@@ -6,4 +6,4 @@
       win_copy:
             src:  ./file2.txt
             dest: C:\Saurabh\
-            remote_src: no
+           
