@@ -2,11 +2,7 @@ pipeline {
   agent { label 'ubuntu' }
 
   stages {
-stage('Copy artifacts'){
-steps {
-copyArtifacts excludes: 'bin/Release', filter: 'bin/Release/*.TapPackage', fingerprintArtifacts: true, projectName: 'Pipeline', target: 'Package'
-}
-}    
+    
 stage('Install Dependencies') {
             steps {
                 // Install Python, pip, and other required dependencies
@@ -27,8 +23,11 @@ stage('Install Dependencies') {
                 '''
             }
         }
-
-
+    stage('Copy artifacts'){
+steps {
+copyArtifacts excludes: 'bin/Release', filter: 'bin/Release/*.TapPackage', fingerprintArtifacts: true, projectName: 'Pipeline', target: 'Package'
+}
+}
       stage('Hello') {
       steps {
         sh 'ansible-playbook -i winhosts2.ini copy_to_win.yml'
