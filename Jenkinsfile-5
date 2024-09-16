@@ -1,0 +1,46 @@
+pipeline {
+  agent { label 'ubuntu' }
+
+  stages {
+      stage('Copy artifacts'){
+steps {
+copyRemoteArtifacts from: 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline', includes: 'bin/Release/*.TapPackage', mapper: [$class: 'StripDirectoriesArtifactNameMapper', count: 3]
+}
+}  
+stage('Install Dependencies') {
+            steps {
+                // Install Python, pip, and other required dependencies
+                sh '''
+                    build -t ansible-container .
+                '''
+            }
+        }
+
+        stage('Install WinRM and Python Modules') {
+            steps {
+                // Install WinRM and required Python packages
+                sh '''
+                   
+                    pip install --upgrade pip  # Upgrade pip
+                    pip install pywinrm requests  # Install pywinrm and requests
+                '''
+            }
+        }
+
+
+      stage('Ansible Playbook to copy TapPackages') {
+      steps {
+        sh 'cd /home/kpclocal/jenkins/workspace/AnsibleProject/bin/Release/'
+        sh 'chmod 777 *'
+        sh  'dos2unix /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
+        sh  'ls -l /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
+        sh  'chmod 777 /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
+
+       sh 'ansible-inventory -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini --list'
+
+        sh 'ansible-playbook -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini copy_to_win.yml -vvv'
+      }
+    }
+  }
+}
+ 
