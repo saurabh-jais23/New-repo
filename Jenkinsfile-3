@@ -33,13 +33,13 @@ stage('Install Dependencies') {
       steps {
         sh 'cd /home/kpclocal/jenkins/workspace/AnsibleProject/bin/Release/'
         sh 'chmod 777 *'
-        sh  'dos2unix /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
-        sh  'ls -l /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
-        sh  'chmod 777 /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
+        sh  'dos2unix /home/kpclocal/jenkins/workspace/AnsibleProject/workspace/winhosts2.ini'
+        sh  'ls -l /home/kpclocal/jenkins/workspace/AnsibleProject/workspace/winhosts2.ini'
+        sh  'chmod 777 /home/kpclocal/jenkins/workspace/AnsibleProject/workspace/winhosts2.ini'
 
-       sh 'ansible-inventory -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini --list'
+       sh 'ansible-inventory -i /home/kpclocal/jenkins/workspace/AnsibleProject/workspace/winhosts2.ini --list'
 
-        sh 'ansible-playbook -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini copy_to_win.yml -vvv'
+        sh 'ansible-playbook -i /home/kpclocal/jenkins/workspace/AnsibleProject//workspace/winhosts2.ini copy_to_win.yml -vvv'
       }
     }
   }
