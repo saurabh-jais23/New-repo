@@ -35,7 +35,7 @@ stage('Install Dependencies') {
         sh 'chmod 777 *'
         sh  'dos2unix /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
         sh  'ls -l /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
-        sh  'chmod 644 /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
+        sh  'chmod 777 /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
 
        sh 'ansible-inventory -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini --list'
 
