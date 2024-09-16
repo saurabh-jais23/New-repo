@@ -4,7 +4,7 @@ pipeline {
   stages {
       stage('Copy artifacts'){
 steps {
-copyRemoteArtifacts from: 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline', includes: 'bin/Release/*.TapPackage', mapper: [$class: 'StripDirectoriesArtifactNameMapper', count: 3]
+copyArtifacts excludes: 'bin/Release', filter: 'bin/Release/*.TapPackage', fingerprintArtifacts: true, projectName: 'Pipeline', target: 'Package'
 }
 }  
 stage('Install Dependencies') {
@@ -31,13 +31,7 @@ stage('Install Dependencies') {
 
       stage('Ansible Playbook to copy TapPackages') {
       steps {
-        sh  'dos2unix /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
-        sh  'ls -l /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
-        sh  'chmod 644 /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
-
-       sh 'ansible-inventory -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini --list'
-
-        sh 'ansible-playbook -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini copy_to_win.yml -vvv'
+     sh 'ansible-playbook -i winhosts2.ini copy_to_win.yml'
       }
     }
   }
