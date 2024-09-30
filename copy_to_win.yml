@@ -5,5 +5,5 @@
     - name: Copy the contents of Packages/ directory to the target server
       win_copy:
             src:  bin/Release/
-            dest: C:\Saurabh\
+            dest: C:\Saurabh\Opentap-Packages\
            
