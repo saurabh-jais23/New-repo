@@ -32,7 +32,7 @@ stage('Install Dependencies') {
 
       stage('Ansible Playbook to copy TapPackages') {
       steps {
-        sh 'cd /home/kpclocal/jenkins/workspace/AnsibleProject/bin/Release/'
+        sh 'cd /home/kpclocal/jenkins/workspace/AnsibleProject/Installer/'
         sh 'chmod 777 *'
         sh  'dos2unix /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
         sh  'ls -l /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
