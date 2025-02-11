@@ -1,5 +1,5 @@
 - name: Install EXE Package on Windows
-  hosts: windows
+  hosts: windows_servers
   tasks:
     - name: Install Software
       win_package:
