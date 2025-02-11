@@ -1,0 +1,13 @@
+- name: Install EXE Package on Windows
+  hosts: windows
+  tasks:
+    - name: Install Software
+      win_package:
+        path: C:\Saurabh\tap-packages\installer.exe
+        arguments: '/S'  # Silent installation argument
+        state: present
+      register: install_result
+
+    - name: Check Installation Status
+      debug:
+        msg: "{{ install_result }}"
