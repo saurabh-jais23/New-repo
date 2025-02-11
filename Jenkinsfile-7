@@ -40,7 +40,7 @@ stage('Install Dependencies') {
 
        sh 'ansible-inventory -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini --list'
 
-        sh 'ansible-playbook -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini copy_to_win.yml -vvv'
+        sh 'ansible-playbook -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini install_to_target_servers.yml -vvv'
       }
     }
   }
