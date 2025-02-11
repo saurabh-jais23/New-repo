@@ -3,7 +3,7 @@
   tasks:
     - name: Install Software
       win_package:
-        path: C:\Saurabh\tap-packages\installer.exe
+        path: C:\Saurabh\test-packages\*.exe
         arguments: '/S'  # Silent installation argument
         state: present
       register: install_result
