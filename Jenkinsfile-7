@@ -1,0 +1,48 @@
+pipeline {
+  agent { label 'ubuntu' }
+
+  stages {
+      stage('Copy artifacts'){
+steps {
+copyRemoteArtifacts from: 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline', includes: 'Installer/P705xA O-RAN Radio Unit Toolset *.exe', mapper: [$class: 'StripDirectoriesArtifactNameMapper', count: 4]
+copyRemoteArtifacts from: 'jenkins://dd403f71c16abd7869f7434a475aef36/Pipeline', includes: 'Installer/P705xA O-RAN Radio Unit Toolset *.exe', selector: [$class: 'LastStableRemoteBuildSelector']
+}
+}  
+stage('Install Dependencies') {
+            steps {
+                // Install Python, pip, and other required dependencies
+                sh '''
+                    sudo apt-get update
+                    sudo apt-get install -y python3 python3-venv python3-pip
+                '''
+            }
+        }
+
+        stage('Install WinRM and Python Modules') {
+            steps {
+                // Install WinRM and required Python packages
+                sh '''
+                   
+                    pip install --upgrade pip  # Upgrade pip
+                    pip install pywinrm requests  # Install pywinrm and requests
+                '''
+            }
+        }
+
+
+      stage('Install the latest installer from TapPackages') {
+      steps {
+        sh 'cd /home/kpclocal/jenkins/workspace/AnsibleProject/Installer/'
+        sh 'chmod 777 *'
+        sh  'dos2unix /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
+        sh  'ls -l /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
+        sh  'chmod 777 /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
+
+       sh 'ansible-inventory -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini --list'
+
+        sh 'ansible-playbook -i /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini copy_to_win.yml -vvv'
+      }
+    }
+  }
+}
+ 
