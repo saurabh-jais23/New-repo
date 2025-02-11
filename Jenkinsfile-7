@@ -27,8 +27,7 @@ stage('Install Dependencies') {
 
       stage('Install the latest installer from TapPackages') {
       steps {
-        sh 'cd /home/kpclocal/jenkins/workspace/AnsibleProject/Installer/'
-        sh 'chmod 777 *'
+
         sh  'dos2unix /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
         sh  'ls -l /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
         sh  'chmod 777 /home/kpclocal/jenkins/workspace/AnsibleProject/winhosts2.ini'
